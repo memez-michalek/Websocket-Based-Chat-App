@@ -1,0 +1,26 @@
+<html>
+<body>
+<input type="text" id="input"/>
+<button type="button", onclick="submit()"></button>
+<pre id="output"></pre>
+</body>
+<script>
+    input= document.getElementById("input")
+    output = document.getElementById("output")
+    ws = new WebSocket("ws://localhost:8080/chat")
+
+    ws.onmessage = function(event)
+    {
+        output.innerHTML += (event.data) + "<br>"
+    }
+
+    function submit(){
+        output.innerHTML += input.value + "<br>"
+        ws.send(input.value)
+        input.value = ""
+        
+    }
+    
+
+</script>
+</html>

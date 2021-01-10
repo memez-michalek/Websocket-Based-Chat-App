@@ -1,0 +1,36 @@
+version: '3'
+services: 
+  
+  database:
+    image: postgres
+    environment: 
+      POSTGRES_DB: chat
+      POSTGRES_PASSWORD: password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+  #web:
+  #  build: ./websockets-project
+  #  volumes: 
+  #    - "./websockets-project/:/app/"
+  #  ports:
+  #    - "8000:8000"
+  #  depends_on:
+  #    database:
+  #      condition: service_healthy
+  #  network_mode: "host"
+  
+  redis:
+    image: redis
+    ports: 
+      - 6379:6379
+
+
+ 
+ 
+    
+  

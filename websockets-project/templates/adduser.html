@@ -1,0 +1,23 @@
+<html>
+<body>
+<p>hi pls add user</p>
+<p>jd</p>
+<form method="POST">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Users name</label>
+    <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <select name="channelid" > 
+        {{range .Channels }}    
+            <option value="{{.Channelid}}">
+                {{.Name}}
+            </option>
+        {{end}}
+    </select>
+    <button type="submit" id="submit" name="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+</body>
+
+</html>

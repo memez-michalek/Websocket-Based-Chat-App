@@ -1,0 +1,39 @@
+<html>
+<body>
+<p>hi pls add user</p>
+<p>all users from channels</p>
+{{range .Channels}}
+    <h1>{{.Name}}</h1>
+    {{range .Users}}
+    <li>{{.}}</li>
+    {{end}}
+    {{end}}
+
+
+<h1>DELETE USER</h1>
+
+
+    <form method="POST">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">users name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="username"aria-describedby="emailHelp">
+          </div>
+          <select name="channelid">
+            {{range .Channels}}
+            <option value="{{.Channelid}}">
+                {{.Name}}
+            </option>
+            {{end}}
+           </select>
+      <button type="submit" id="submit" name="submit" class="btn btn-primary">Submit</button>
+    
+    </form>
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<html>
+<body>
+<p>select channel from which you'd like to quit</p>
+{{range .Channels}}
+    <h1>{{.Name}}</h1>
+{{end}}
+
+
+<h1>QUIT CHANNEL</h1>
+
+
+    <form method="POST">
+        <div class="mb-3"><select name="id">
+            {{range .Channels}}
+            <option value="{{.Channelid}}">
+                {{.Name}}
+            </option>
+            {{end}}
+           </select>
+          </div>
+      <button type="submit" id="submit" name="submit" class="btn btn-primary">Submit</button>
+    
+    </form>
+
+
+
+</body>
+
+</html>

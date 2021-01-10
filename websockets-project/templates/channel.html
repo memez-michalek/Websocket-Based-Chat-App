@@ -1,0 +1,32 @@
+<html>
+<body>
+<p>{{.Channel.Name}}</p>
+<ul>
+ {{range .Messages}}
+    <li>{{.}}</li>
+{{end}}
+</ul>
+<input type="text" id="input"/>
+<button type="button", onclick="submit()"></button>
+<pre id="output"></pre>
+</body>
+<script>
+    input= document.getElementById("input")
+    output = document.getElementById("output")
+    ws = new WebSocket("ws://localhost:8081/chat/{{.Channel.Channelid}}")
+
+    ws.onmessage = function(event)
+    {
+        output.innerHTML += (event.data) + "<br>"
+    }
+
+    function submit(){
+        
+        ws.send(input.value)
+        input.value = ""
+        
+    }
+    
+
+</script>
+</html>

@@ -1,0 +1,73 @@
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="navbar-brand">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/login">Login</a>
+        </li>
+        <li>   
+            <a class="nav-link active" aria-current="page" href="/register">Register</a>
+        </li>
+        <li>
+            <a class="nav-link active" aria-current="page" href="/createchannel">Createchannel</a>
+        </li>
+        <li>
+            <a class="nav-link active" aria-current="page" href="/adduser">Adduser</a>
+        </li>
+        <li>
+            <a class="nav-link active" aria-current="page" href="/deleteuser">Delete User</a>
+        </li>
+        <li>
+            <a class="nav-link active" aria-current="page" href="/quit">Quit channel</a>
+        </li>
+        <li>
+            <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+        </li>
+        <li>
+            <a class="nav-link active" aria-current="page" href="/deletechannel">Delete channel</a>
+        </li>
+        <li class="pagination justify-content-center">
+        <p class="pagination justify-content-end">{{.Username}}</p>
+        </li>
+    </ul>
+    </div>
+</div>
+</nav>
+<h1>welcome to chat website</h1>
+
+<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+
+
+
+
+
+
+<p>your channels</p>
+<ul class="list-group">
+    {{range .Channelstruct}}
+        
+            <li class="list-group-item">
+                <a href="/channel/{{.Channelid}}" class="btn btn-primary">{{.Name}}</a>
+            </li>
+    {{end}}
+</ul>
+
+
+</body>
+
+
+
+
+
+</html>
+
+
+
+
+
