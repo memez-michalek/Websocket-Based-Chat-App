@@ -25,7 +25,7 @@ func TestMainHealthTest(t *testing.T) {
 
 	}
 	recorder := httptest.NewRecorder()
-	handler := http.HandlerFunc(indexHandler)
+	handler := http.HandlerFunc(IndexHandler)
 	handler.ServeHTTP(recorder, req)
 	if status := recorder.Code; status != http.StatusOK {
 		t.Errorf("handler returned wrong http status code. GOT: %v , WANT: %v", status, http.StatusOK)

@@ -13,17 +13,22 @@ services:
       retries: 5
     ports:
       - "5432:5432"
-  #web:
-  #  build: ./websockets-project
-  #  volumes: 
-  #    - "./websockets-project/:/app/"
-  #  ports:
-  #    - "8000:8000"
-  #  depends_on:
-  #    database:
-  #      condition: service_healthy
-  #  network_mode: "host"
   
+  web:
+      build:
+        context: websockets-project
+      environment:
+        GIN_MODE: release
+      ports:
+        - '8080:8080'
+      volumes: 
+        - ./websockets-project:/app
+      depends_on:
+        database:
+          condition: service_healthy
+
+
+
   redis:
     image: redis
     ports: 

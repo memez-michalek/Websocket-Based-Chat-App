@@ -12,11 +12,12 @@ import (
 
 	"github.com/go-session/session"
 
+	"websockets-project/chathandler"
+	"websockets-project/dbutils"
+	"websockets-project/webtoken"
+
 	"github.com/gorilla/websocket"
 	_ "github.com/lib/pq"
-	"github.com/my/repo/websockets-project/chathandler"
-	"github.com/my/repo/websockets-project/dbutils"
-	"github.com/my/repo/websockets-project/webtoken"
 )
 
 var (
@@ -34,7 +35,7 @@ var upgrader = websocket.Upgrader{
 	WriteBufferSize: 1024,
 }
 
-func indexHandler(w http.ResponseWriter, r *http.Request) {
+func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	templ := template.Must(template.ParseFiles("./templates/main.html"))
 
 	s, err := session.Start(context.Background(), w, r)
@@ -82,8 +83,6 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-//http.ServeFile(w, r, "./templates/main.html")
-
 func registerHandler(w http.ResponseWriter, r *http.Request) {
 	database := dbutils.InitDB()
 	s, err := session.Start(context.Background(), w, r)
@@ -95,7 +94,7 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 
 	tkn, e := s.Get("webtoken")
 	if e != true {
-		http.Redirect(w,r,"/",302)
+		http.Redirect(w, r, "/", 302)
 		fmt.Println(e)
 	}
 
@@ -544,7 +543,7 @@ func deleteChannelHandler(w http.ResponseWriter, r *http.Request) {
 }
 func main() {
 
-	http.HandleFunc("/", indexHandler)
+	http.HandleFunc("/", IndexHandler)
 	http.HandleFunc("/login/", loginHandler)
 	http.HandleFunc("/register/", registerHandler)
 	http.HandleFunc("/logout/", logoutHandler)
@@ -556,5 +555,5 @@ func main() {
 	http.HandleFunc("/quit/", quitChannelHandler)
 	http.HandleFunc("/deletechannel/", deleteChannelHandler)
 
-	http.ListenAndServe(":8081", nil)
+	http.ListenAndServe(":8080", nil)
 }

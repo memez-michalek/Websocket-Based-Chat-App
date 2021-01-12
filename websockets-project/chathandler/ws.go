@@ -7,8 +7,9 @@ import (
 	"log"
 	"time"
 
+	"websockets-project/dbutils"
+
 	"github.com/gorilla/websocket"
-	"github.com/my/repo/websockets-project/dbutils"
 )
 
 var ctx = context.Background()

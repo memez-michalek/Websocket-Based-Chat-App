@@ -1,13 +1,10 @@
-FROM golang:1.15
+FROM golang:1.15.6-alpine3.12
 
 WORKDIR /app
 
-
-RUN  go get  github.com/go-session/session && go get github.com/gorilla/websocket && go get -u github.com/gorilla/mux && go get github.com/lib/pq
+RUN apk add git gcc libc-dev \
+    &&  go get -u -v github.com/cosmtrek/air
 
 COPY . .
-
-RUN go build 
-
-EXPOSE 8000
-CMD [ "./app" ]
+EXPOSE 8080
+CMD ["air", "-d"]
