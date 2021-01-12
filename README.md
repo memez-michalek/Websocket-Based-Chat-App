@@ -6,12 +6,8 @@ Communication between users is based around websockets. Messages are stored via 
 
 # HOW TO START THE APP?
 
-First of all you need to start redis and postgres db.
+Just type in 
 
 docker-compose up --build
 
-Then you need to change directory to websockets-project and run main.go:
-
-cd websockets-project
-
-go run main.go
+to startup execution
